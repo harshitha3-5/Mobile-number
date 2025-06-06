@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mobile Number Validation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        input {
+            padding: 8px;
+            margin: 10px;
+        }
+        .error {
+            color: red;
+        }
+        .success {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Mobile Number Validation using JavaScript</h2>
+
+    <label for="mobile">Enter Mobile Number</label>
+    <input type="text" id="mobile" placeholder="Enter 10 Digit Mobile Num">
+    <br>
+    <button onclick="validateMobile()">Validate</button>
+    <p id="message"></p>
+
+    <script>
+        function validateMobile() {
+            const mobile = document.getElementById("mobile").value.trim();
+            const message = document.getElementById("message");
+
+            const mobilePattern = /^[6-9]\d{9}$/; // Valid Indian 10-digit number starting with 6-9
+
+            if (mobile === "") {
+                message.innerHTML = "Mobile number is required";
+                message.className = "error";
+            } else if (!mobilePattern.test(mobile)) {
+                message.innerHTML = "Invalid mobile number. Please enter a 10-digit number starting with 6-9.";
+                message.className = "error";
+            } else {
+                message.innerHTML = "Valid mobile number!";
+                message.className = "success";
+            }
+        }
+    </script>
+
+</body>
+</html>
